@@ -1,0 +1,39 @@
+{
+    "name": "stg/ieu_app",
+    "description": "ieUtilities - Application",
+    "type": "",
+    "license": "MIT",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Philipp Steingrebe",
+            "email": "philipp@steingrebe.de"
+        }
+    ],
+
+    "require": {
+        "stg/ieu_container": "dev-master",
+        "stg/ieu_http": "dev-master",
+        "twig/twig": "^1.24",
+        "monolog/monolog": "^1.19"
+    },
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "C:\\Users\\psteingrebe\\Dropbox\\__development\\stg\\ieu_container"
+        },
+        {
+            "type": "vcs",
+            "url": "C:\\Users\\psteingrebe\\Dropbox\\__development\\stg\\ieu_http"
+        }
+    ],
+
+
+
+    "autoload": {
+        "psr-0" : {
+            "ieu\\" : "src/"
+        }
+    }
+}
