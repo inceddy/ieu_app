@@ -13,8 +13,10 @@ class App extends Container\Container {
 	{
 		parent::__construct();
 
-		// Insert reuqest service
-		$this->service('Request', [Request::CLASS]);
+		// Insert reuqest factory
+		$this->factory('Request', [function(){
+			return Request::native();
+		}]);
 
 		// Inser router provider
 		$this->provider('Router', new RouterProvider);
