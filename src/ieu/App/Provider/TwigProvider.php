@@ -2,8 +2,12 @@
 
 namespace ieu\App\Provider;
 use ieu\Container\Provider;
-use Twig_Environment;
 use LogicException;
+
+use Twig_Environment;
+use Twig_SimpleFilter;
+use Twig_Extension;
+
 
 /**
  * A provider for Twig.
@@ -26,12 +30,21 @@ class TwigProvider extends Provider {
 	
 	private $options = [];
 
+
 	/**
 	 * The filter cache
 	 * @var array
 	 */
 	
 	private $filters = [];
+
+
+	/**
+	 * The extension cache
+	 * @var array
+	 */
+	
+	private $extensions = [];
 
 
 	/**
@@ -75,6 +88,11 @@ class TwigProvider extends Provider {
 		// Add filters
 		foreach ($this->filters as $filter) {
 			$environment->addFilter($filter);
+		}
+
+		// Add extensions
+		foreach ($this->extensions as $extension) {
+			$environment->addExtension($extension);
 		}
 
 		return $environment;
@@ -162,7 +180,7 @@ class TwigProvider extends Provider {
 
 
 	/**
-	 * Adds a new filter to the filter cahce
+	 * Adds a new filter to the filter cache
 	 *
 	 * @param Twig_SimpleFilter $filter  The filter
 	 *
@@ -187,5 +205,34 @@ class TwigProvider extends Provider {
 	public function getFilters()
 	{
 		return $this->filters;
+	}
+
+
+	/**
+	 * Adds a new extension to the extension cache
+	 *
+	 * @param Twig_Extension $extension  The extension
+	 *
+	 * @return self
+	 * 
+	 */
+	
+	public function addExtension(Twig_Extension $extension)
+	{
+		$this->extensions[] = $extension;
+
+		return $this;
+	}
+
+
+	/**
+	 * Gets the extension cache
+	 *
+	 * @return array  The extension cache
+	 */
+
+	public function getExtensions()
+	{
+		return $this->extensions;
 	}
 }
