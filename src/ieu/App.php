@@ -9,14 +9,12 @@ use ieu\Http\RouterProvider;
 
 class App extends Container\Container {
 
-	public function __construct()
+	public function __construct(...$containers)
 	{
-		parent::__construct();
+		parent::__construct(...$containers);
 
-		// Insert reuqest factory
-		$this->factory('Request', [function(){
-			return Request::native();
-		}]);
+		// Insert reuqest as constant
+		$this->constant('Request', Request::native());
 
 		// Inser router provider
 		$this->provider('Router', new RouterProvider);
