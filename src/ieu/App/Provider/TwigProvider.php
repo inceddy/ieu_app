@@ -51,6 +51,8 @@ class TwigProvider extends Provider {
 	 * Contructor
 	 * Invokes a new TwigProvider
 	 *
+	 * @throws LogicException If the Twig_Environment class is not available
+	 *
 	 * @return self
 	 * 
 	 */
