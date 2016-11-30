@@ -6,6 +6,7 @@ namespace ieu;
 
 use ieu\Http\Request;
 use ieu\Http\RouterProvider;
+use ieu\Http\Response;
 
 class App extends Container\Container {
 
@@ -40,7 +41,13 @@ class App extends Container\Container {
 	public function run()
 	{
 		$this->boot();
-		echo $this['Router']->handle();
+		
+		if (!($response = $this['Router']->handle()) instanceof Response){
+			$response = new Response('Error: Router does not deliver Response object!', 500);
+		}
+
+		$response->send();
+
 		return $this;
 	}
 }
