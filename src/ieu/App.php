@@ -40,7 +40,7 @@ class App extends Container\Container {
 	public function run()
 	{
 		$this->boot();
-		$this['Router']->handle();
+		echo $this['Router']->handle();
 		return $this;
 	}
 }

@@ -2,6 +2,7 @@
 *.sublime-project
 *.local.*
 \_*
+composer.lock
 Thumbs.db
 /
 vendor/
